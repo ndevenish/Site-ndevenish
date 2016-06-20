@@ -21,4 +21,4 @@ github_username:  ndevenish
 # Build settings
 markdown: kramdown
 
-permalink: /:year/:month/:day/:title
+permalink: /:year/:month/:day/:title.html
