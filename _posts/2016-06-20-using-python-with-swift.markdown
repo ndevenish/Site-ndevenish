@@ -3,6 +3,7 @@ layout: post
 title:  "Using Python With Swift"
 date:   2016-06-20 13:08:05 +0100
 categories: python swift
+excerpt_separator: <!--more-->
 ---
 
 (TL;DR: Create a python .plugin bundle with `py2app`, load it in `main.swift`
@@ -27,13 +28,18 @@ working with the `.app` method, I decided to use the `.plugin` approach, despite
 the relative lack of documentation.
 
 This article shows a very basic application to demonstrate the fundamental
-principals of integrating swift and python. The aims for the application are:
+principals of integrating swift and python.
+
+<!--more-->
+
+The aims for the application are:
 
 - A canonical storyboard-based swift app 
 - A single window that has a custom NSView
 - The view controller for the window is written in swift and calls python code
   in order to get the python version, and prints it to the console
 - The NSView is a python-based custom view with a colored background
+
 
 Basic Integration
 -----------------
