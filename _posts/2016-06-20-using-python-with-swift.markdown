@@ -42,7 +42,7 @@ Let's start by building the very basic infrastructure; a python-based plugin
 that is loaded by our swift application, and simply prints to standard output
 to let us know that it has been executed.
 
-### 1. Create the XCode project
+### 1. Create the XCode project
 
 Start by creating a new OSX Application project in XCode, and set the language to Swift.
 I'm calling the application `PythonToSwiftExample`, which doesn't matter except
@@ -203,7 +203,7 @@ protocol will be suitable, and with Swift we can't just rely on knowing we are
 sending the right messages. So, let's create an Objective-C protocol, subclass
 from it in python, and then instantiate it in Swift.
 
-### Loading the .plugin Principal class
+### Loading the .plugin Principal class
 
 Create a new Swift file in the XCode project, named `BridgeInterface.swift`:
 
