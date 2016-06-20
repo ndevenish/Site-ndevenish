@@ -8,7 +8,7 @@ excerpt_separator: <!--more-->
 
 (TL;DR: Create a python .plugin bundle with `py2app`, load it in `main.swift`
 and use `@objc` protocols to specify concrete interfaces for the python classes
-to implement)
+to implement. Example [here][githubexample].)
 
 I wanted to use an existing library of python code that I had written, in a
 new macOS application - to provide an easy-to-use UI for the library. I wanted
@@ -40,6 +40,8 @@ The aims for the application are:
   in order to get the python version, and prints it to the console
 - The NSView is a python-based custom view with a colored background
 
+And a completed version of the application developed in this article can be
+found [here][githubexample].
 
 Basic Integration
 -----------------
@@ -355,3 +357,4 @@ and running this gives the expected, complete output:
 [attributes]: https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Attributes.html
 [principal class]: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSBundle_Class/#//apple_ref/occ/instp/NSBundle/principalClass
 [naming rules]: https://pythonhosted.org/pyobjc/core/intro.html#underscores-and-lots-of-them
+[githubexample]: https://github.com/ndevenish/PythonToSwiftExample
