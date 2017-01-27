@@ -6,6 +6,7 @@ layout: default
 
   <ul class="post-list">
     {% for post in site.posts %}
+      {% if post.private != true %}
       <li>
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
@@ -15,6 +16,7 @@ layout: default
         {{ post.excerpt }}
         <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">[Read More →]</a>
       </li>
+      {% endif %}
     {% endfor %}
   </ul>
 
