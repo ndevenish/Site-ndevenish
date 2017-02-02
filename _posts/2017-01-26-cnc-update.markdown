@@ -2,7 +2,7 @@
 layout: post
 title:  "CNC Update"
 date:   2017-01-26 22:00:00 +0000
-categories: cnc making
+categories: cnc making rml
 excerpt_separator: <!--more-->
 private: true
 ---
