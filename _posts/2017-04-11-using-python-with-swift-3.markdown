@@ -1,25 +1,23 @@
 ---
 layout: post
-title:  "Using Python With Swift"
-date:   2016-06-20 13:08:05 +0100
+title:  "Using Python With Swift 3"
+date:   2017-04-11 10:30:00 +0100
 categories: python swift
 excerpt_separator: <!--more-->
 ---
-
-**Update 2017/11/4:** I've updated this post for compatability with Swift 3
-and XCode 8.1 
-[here]({{ site.baseurl }}{% post_url 2017-04-11-using-python-with-swift-3 %}).
-
-<!--more-->
 
 (TL;DR: Create a python .plugin bundle with `py2app`, load it in `main.swift`
 and use `@objc` protocols to specify concrete interfaces for the python classes
 to implement. Example [here][githubexample].)
 
+*(This is an update to an [earlier]({{ site.baseurl }}{% post_url 2016-06-20-using-python-with-swift %})
+article for compatability with Swift 3 and XCode 8.1. There has been a couple of name and interface
+changes, but nothing major.)*
+
 I wanted to use an existing library of python code that I had written, in a
 new macOS application - to provide an easy-to-use UI for the library. I wanted
 to use Swift, both because I find it an infinitely nicer language than
-Objective-C, and it seems to be the way things are heading.
+Objective-C, and it seems Swift is now accepted as mainstream.
 
 There is lots of information around on how to integrate python with Objective-C
 via the [`pyobjc`][pyobjc] python library, but a lot of information is very old
@@ -35,6 +33,8 @@ the relative lack of documentation.
 
 This article shows a very basic application to demonstrate the fundamental
 principals of integrating swift and python.
+
+<!--more-->
 
 The aims for the application are:
 
@@ -56,7 +56,7 @@ to let us know that it has been executed.
 
 ### 1. Create the XCode project
 
-Start by creating a new OSX Application project in XCode, and set the language to Swift.
+Start by creating a new macOS Cococa Application project in XCode, and set the language to Swift.
 I'm calling the application `PythonToSwiftExample`, which doesn't matter except
 that it changes the default namespace by which your swift interfaces are exported.
 We're also using storyboards.
@@ -84,7 +84,7 @@ now, we just want to replicate the default behavior, so the contents of
 ```swift
 import Cocoa
 
-NSApplicationMain(Process.argc, Process.unsafeArgv)
+exit(NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv))
 ```
 
 ### 2. Create the python .plugin bundle
@@ -176,13 +176,14 @@ that it locates and loads the plugin bundle:
 
 import Cocoa
 
-let path = Bundle.main().pathForResource("Bridge", ofType: "plugin")
+let path = Bundle.main.path(forResource: "Bridge", ofType: "plugin")
 guard let pluginbundle = Bundle(path: path!) else {
   fatalError("Could not load python plugin bundle")
 }
 pluginbundle.load()
 
-NSApplicationMain(Process.argc, Process.unsafeArgv)
+let ret = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
+exit(ret)
 ```
 And now we can run the application! If everything is working correctly, then
 a blank window should open and the python logging output should be visible in
